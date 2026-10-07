@@ -11,7 +11,12 @@ interface PrivateAuthContextType {
 
 const PrivateAuthContext = createContext<PrivateAuthContextType | undefined>(undefined);
 
-const PUBLIC_PORTFOLIO_URL = import.meta.env.VITE_PUBLIC_PORTFOLIO_URL || 'http://localhost:5173';
+const PUBLIC_PORTFOLIO_URL = (
+  import.meta.env.VITE_PUBLIC_PORTFOLIO_URL ||
+  import.meta.env.VITE_PUBLIC_APP_URL ||
+  'http://localhost:5173'
+).replace(/\/$/, '');
+
 
 export const PrivateAuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
