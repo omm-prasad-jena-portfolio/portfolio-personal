@@ -14,7 +14,7 @@ const PrivateAuthContext = createContext<PrivateAuthContextType | undefined>(und
 const PUBLIC_PORTFOLIO_URL = (
   import.meta.env.VITE_PUBLIC_PORTFOLIO_URL ||
   import.meta.env.VITE_PUBLIC_APP_URL ||
-  'http://localhost:5173'
+  (import.meta.env.PROD ? 'https://ommprasadjena.vercel.app' : 'http://localhost:5173')
 ).replace(/\/$/, '');
 
 

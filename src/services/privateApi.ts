@@ -2,7 +2,7 @@ export const API_BASE_URL = (
   import.meta.env.VITE_API_BASE_URL ||
   import.meta.env.VITE_API_URL ||
   import.meta.env.VITE_BACKEND_URL ||
-  'http://localhost:8000'
+  (import.meta.env.PROD ? 'https://portfolio-backend-yrzq.onrender.com' : 'http://localhost:8000')
 ).replace(/\/$/, '');
 
 
