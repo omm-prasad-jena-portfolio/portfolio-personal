@@ -27,3 +27,21 @@ export async function createExam(data: ExamData): Promise<ExamData> {
   });
   return res.json();
 }
+
+export async function updateExamApi(id: number, data: Partial<ExamData>): Promise<ExamData> {
+  const res = await fetch(`${API_BASE_URL}/api/private/exams/${id}/`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify(data),
+  });
+  return res.json();
+}
+
+export async function deleteExamApi(id: number): Promise<boolean> {
+  const res = await fetch(`${API_BASE_URL}/api/private/exams/${id}/`, {
+    method: 'DELETE',
+    credentials: 'include',
+  });
+  return res.ok;
+}

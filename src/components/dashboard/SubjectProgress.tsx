@@ -3,6 +3,8 @@ import { Sigma, Monitor, Code2, Database, Cpu, ArrowRight, LucideIcon } from 'lu
 import Card from '../ui/Card';
 import ProgressBar from '../ui/ProgressBar';
 import { useDashboardData } from '../../context/DashboardContext';
+import { useExams } from '../../context/ExamsContext';
+import { computeExamDerived } from '../../utils/examCalculations';
 
 const iconMap: Record<string, LucideIcon> = {
   Sigma,
@@ -14,6 +16,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export const SubjectProgress: React.FC = () => {
   const { data } = useDashboardData();
+  const { exams } = useExams();
   const { subjectProgress } = data;
 
   return (
@@ -39,12 +42,35 @@ export const SubjectProgress: React.FC = () => {
       <div className="subject-progress-list">
         {subjectProgress.map((item) => {
           const IconComp = iconMap[item.iconName] || Monitor;
+          const matchingExam = exams.find(
+            (e) =>
+              e.subjectName.toLowerCase().includes(item.name.toLowerCase()) ||
+              item.name.toLowerCase().includes(e.subjectName.toLowerCase())
+          );
+          const examDerived = matchingExam ? computeExamDerived(matchingExam) : null;
+
           return (
             <div key={item.name} className="subject-progress-item">
               <div className="subject-info-row">
                 <div className="subject-info-left">
                   <IconComp size={16} color={item.color} />
                   <span>{item.name}</span>
+                  {examDerived && (
+                    <span
+                      style={{
+                        fontSize: '10px',
+                        fontWeight: 600,
+                        color: 'var(--accent-orange)',
+                        background: 'rgba(255, 107, 53, 0.15)',
+                        padding: '1px 6px',
+                        borderRadius: '4px',
+                        marginLeft: '4px',
+                      }}
+                      title={`Exam: ${examDerived.daysLeftLabel}`}
+                    >
+                      {examDerived.daysLeftLabel}
+                    </span>
+                  )}
                 </div>
                 <span className="subject-info-right">{item.percentage}%</span>
               </div>

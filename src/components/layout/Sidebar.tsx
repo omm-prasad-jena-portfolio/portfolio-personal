@@ -35,7 +35,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath = '/' }) => {
   return (
     <aside className="study-sidebar">
       <div>
-        <div className="study-sidebar-logo">
+        <div
+          className="study-sidebar-logo"
+          onClick={() => {
+            window.history.pushState({}, '', '/');
+            window.dispatchEvent(new PopStateEvent('popstate'));
+          }}
+        >
           <div className="study-logo-icon">
             <Zap size={20} fill="#fff" />
           </div>
@@ -52,7 +58,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath = '/' }) => {
                   href={item.path}
                   className={`study-nav-item ${isActive ? 'active' : ''}`}
                   onClick={(e) => {
-                    if (item.path !== '/') {
+                    if (item.path === '/' || item.path === '/exams') {
+                      e.preventDefault();
+                      window.history.pushState({}, '', item.path);
+                      window.dispatchEvent(new PopStateEvent('popstate'));
+                    } else {
                       e.preventDefault();
                     }
                   }}

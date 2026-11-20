@@ -1,0 +1,419 @@
+/* Syllabus Editor Styles - Dark Theme Aligned */
+
+.syllabus-editor-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+/* Empty State */
+.syllabus-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  padding: 24px 16px;
+  background: rgba(11, 13, 20, 0.5);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.syllabus-empty-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.btn-add-unit-empty {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 107, 53, 0.15);
+  color: var(--accent-orange);
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-add-unit-empty:hover {
+  background: rgba(255, 107, 53, 0.25);
+  color: #ffffff;
+  border-color: var(--accent-orange);
+}
+
+/* Units Container */
+.syllabus-units-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+/* Individual Unit */
+.syllabus-unit-block {
+  background: rgba(11, 13, 20, 0.5);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s ease;
+}
+
+.syllabus-unit-block:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Unit Header */
+.syllabus-unit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.syllabus-unit-title-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+  flex: 1;
+}
+
+.syllabus-unit-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.unit-action-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  transition: all 0.15s ease;
+}
+
+.unit-action-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.unit-action-btn.delete:hover {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+/* Inline Confirmation Pill */
+.inline-confirm-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.inline-confirm-text {
+  color: #fca5a5;
+  font-weight: 500;
+}
+
+.btn-confirm-delete {
+  background: #ef4444;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-confirm-delete:hover {
+  background: #dc2626;
+}
+
+.btn-confirm-keep {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  border: none;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-confirm-keep:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* Inline Edit / Rename Input */
+.inline-edit-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.inline-edit-input {
+  background: var(--bg-input);
+  border: 1px solid var(--accent-orange);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: var(--text-primary);
+  font-family: inherit;
+  flex: 1;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-orange-glow);
+}
+
+.btn-inline-save {
+  background: var(--accent-orange);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-inline-save:hover {
+  background: #ea580c;
+}
+
+.btn-inline-cancel {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-inline-cancel:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--text-primary);
+}
+
+/* Error message */
+.inline-error-msg {
+  color: #f87171;
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Topics List */
+.syllabus-topics-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Individual Topic Item */
+.syllabus-topic-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.syllabus-topic-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.syllabus-topic-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.syllabus-checkbox-btn {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.05);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.15s ease;
+}
+
+.syllabus-checkbox-btn:hover {
+  border-color: var(--accent-orange);
+}
+
+.syllabus-checkbox-btn.checked {
+  background: var(--accent-orange);
+  border-color: var(--accent-orange);
+  color: #ffffff;
+}
+
+.syllabus-topic-title-clickable {
+  font-size: 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  flex: 1;
+  line-height: 1.4;
+  word-break: break-word;
+  transition: color 0.15s ease;
+}
+
+.syllabus-topic-title-clickable:hover {
+  color: var(--text-primary);
+}
+
+.syllabus-topic-title-clickable.done {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* Topic Actions (Hover & Touch) */
+.syllabus-topic-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.syllabus-topic-row:hover .syllabus-topic-actions,
+.syllabus-topic-row:focus-within .syllabus-topic-actions {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .syllabus-topic-actions {
+    opacity: 1;
+  }
+}
+
+.topic-action-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.topic-action-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.topic-action-btn.delete:hover {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+/* Add Topic Row */
+.add-topic-row {
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.06);
+}
+
+.add-topic-input {
+  width: 100%;
+  background: rgba(25, 29, 45, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-topic-input:focus {
+  outline: none;
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 0 2px var(--accent-orange-glow);
+}
+
+.add-topic-input::placeholder {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+/* Add Unit Footer Button / Inline Input */
+.add-unit-footer {
+  margin-top: 4px;
+}
+
+.btn-add-unit-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-add-unit-more:hover {
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+  background: rgba(255, 107, 53, 0.05);
+}
+
+.add-unit-inline-box {
+  background: rgba(11, 13, 20, 0.5);
+  border: 1px solid var(--accent-orange);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

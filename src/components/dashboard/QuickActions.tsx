@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import Card from '../ui/Card';
 import { mockDashboardData } from '../../data/mockDashboardData';
+import { useExams } from '../../context/ExamsContext';
 
 const iconMap: Record<string, LucideIcon> = {
   PlusCircle,
@@ -24,6 +25,17 @@ const iconMap: Record<string, LucideIcon> = {
 
 export const QuickActions: React.FC = () => {
   const { quickActions } = mockDashboardData;
+  const { openAddModal } = useExams();
+
+  const handleActionClick = (action: (typeof quickActions)[0]) => {
+    if (action.id === '3' || action.label === 'Add Exam') {
+      window.history.pushState({}, '', '/exams');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      openAddModal();
+      return;
+    }
+    alert(`Action clicked: ${action.label}`);
+  };
 
   return (
     <Card>
@@ -53,7 +65,7 @@ export const QuickActions: React.FC = () => {
               key={action.id}
               type="button"
               className="quick-action-btn"
-              onClick={() => alert(`Action clicked: ${action.label}`)}
+              onClick={() => handleActionClick(action)}
             >
               <div
                 className="quick-action-icon"

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { usePrivateAuth } from './context/PrivateAuthContext';
 import { DashboardProvider } from './context/DashboardContext';
+import { ExamsProvider } from './context/ExamsContext';
 import DashboardLayout from './components/layout/DashboardLayout';
 import Dashboard from './pages/Dashboard';
+import ExamsPage from './pages/ExamsPage';
 
 import { API_BASE_URL } from './services/privateApi';
 
@@ -42,11 +44,25 @@ const App: React.FC = () => {
     );
   }
 
+  const [currentPath, setCurrentPath] = useState<string>(
+    window.location.pathname || '/'
+  );
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname || '/');
+    };
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
   return (
     <DashboardProvider>
-      <DashboardLayout currentPath="/">
-        <Dashboard />
-      </DashboardLayout>
+      <ExamsProvider>
+        <DashboardLayout currentPath={currentPath}>
+          {currentPath === '/exams' ? <ExamsPage /> : <Dashboard />}
+        </DashboardLayout>
+      </ExamsProvider>
     </DashboardProvider>
   );
 };
